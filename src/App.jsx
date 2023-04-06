@@ -23,9 +23,14 @@ export const App = () => {
 		setData([...data, { title, id: new Date(), completed: false }])
 	}
 	return (
-		<>
-			<AddForm onSubmit={onSubmit} />
-			<TodoList data={data} onDelete={onDelete} onChecked={onChecked} />
-		</>
+		<div className='bg-black/60 min-h-screen px-6'>
+			<div className='flex w-2/3 md:w-1/2 flex-col mx-auto py-4 '>
+				<span className='font-extrabold mb-8 text-2xl text-white/80'>
+					TODO:
+				</span>
+				<AddForm onSubmit={onSubmit} />
+				<TodoList data={data} onDelete={onDelete} onChecked={onChecked} />
+			</div>
+		</div>
 	)
 }
