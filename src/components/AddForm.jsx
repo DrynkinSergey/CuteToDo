@@ -4,6 +4,8 @@ export const AddForm = ({ onSubmit }) => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		onSubmit(e.target.addTodo.value)
+		e.target.reset()
+		e.target.focus()
 	}
 	return (
 		<form
@@ -12,7 +14,7 @@ export const AddForm = ({ onSubmit }) => {
 		>
 			<input
 				placeholder='Add some todo....'
-				className=' px-4  w-2/3 rounded-md mr-4'
+				className=' px-4  w-2/3 rounded-md mr-4 text-black'
 				name='addTodo'
 				type='text'
 			/>
