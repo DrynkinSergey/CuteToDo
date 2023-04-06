@@ -9,7 +9,7 @@ export const AddForm = ({ onSubmit }) => {
 	}
 	return (
 		<form
-			className=' flex justify-center w-full mb-8 font-josefin bg-darkMain list-none px-4 py-4 rounded-md border-b-white/30 border-b-[1px] text-white/80'
+			className='shadow-mainDark flex justify-center w-full mb-8 font-josefin bg-darkMain list-none px-4 py-4 rounded-md border-b-white/30  text-white/80'
 			onSubmit={handleSubmit}
 		>
 			<input
@@ -18,7 +18,9 @@ export const AddForm = ({ onSubmit }) => {
 				name='addTodo'
 				type='text'
 			/>
-			<button className='border-[1px] px-4 rounded-md'>+</button>
+			<button className='border-[1px] border-white/10 px-4 rounded-md'>
+				+
+			</button>
 		</form>
 	)
 }
