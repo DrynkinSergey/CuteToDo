@@ -11,13 +11,15 @@ export const Filter = () => {
 		filter === type ? `${classes} text-blue-600` : classes
 	const classes = 'hover:text-white cursor-pointer'
 	return (
-		<li className='list-none  py-4   text-white/40 flex justify-between px-8 items-center'>
+		<li className='list-none  py-4 flex-col md:flex-row  text-white/40 flex justify-between px-8 items-center'>
 			{completedTodos === 0 ? (
-				<span>All is complete!</span>
+				<span className='md:order-1 order-1'>All is complete!</span>
 			) : (
-				<span>{completedTodos} items left</span>
+				<span className='md:order-1 order-1'>
+					<span className='text-blue-500'>{completedTodos}</span> items left
+				</span>
 			)}
-			<div className='flex gap-4 '>
+			<div className='flex gap-4 order-3 mt-4 md:mt-0  md:order-2'>
 				<span
 					onClick={() => dispatch(setFilter('all'))}
 					className={setClasses('all')}
@@ -37,7 +39,10 @@ export const Filter = () => {
 					Completed
 				</span>
 			</div>
-			<span onClick={() => dispatch(resetComplete())} className={classes}>
+			<span
+				onClick={() => dispatch(resetComplete())}
+				className={`${classes} order-2 sm:order-2`}
+			>
 				Clear Completed
 			</span>
 		</li>

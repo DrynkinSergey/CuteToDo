@@ -6,9 +6,11 @@ export const AddForm = ({ onSubmit }) => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		dispatch(addTodo(e.target.addTodo.value))
-		e.target.reset()
-		e.target.focus()
+		if (e.target.addTodo.value.trim()) {
+			dispatch(addTodo(e.target.addTodo.value.trim()))
+			e.target.reset()
+			e.target.focus()
+		}
 	}
 	return (
 		<form
