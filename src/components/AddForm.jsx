@@ -1,9 +1,12 @@
-import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../redux/todoSlice'
 
 export const AddForm = ({ onSubmit }) => {
+	const dispatch = useDispatch()
+
 	const handleSubmit = e => {
 		e.preventDefault()
-		onSubmit(e.target.addTodo.value)
+		dispatch(addTodo(e.target.addTodo.value))
 		e.target.reset()
 		e.target.focus()
 	}

@@ -1,6 +1,9 @@
 import React from 'react'
 import icon from './../assets/images/icon-check.svg'
-export const SingleTodo = ({ id, title, completed, onDelete, onChecked }) => {
+import { useDispatch } from 'react-redux'
+import { removeTodo, toggleTodo } from '../redux/todoSlice'
+export const SingleTodo = ({ id, title, completed }) => {
+	const dispatch = useDispatch()
 	const stylesActive = completed
 		? 'bg-gradient-to-br from-checkboxFrom to-checkboxTo'
 		: ''
@@ -11,7 +14,7 @@ export const SingleTodo = ({ id, title, completed, onDelete, onChecked }) => {
 					type='checkbox'
 					className='absolute opacity-0 cursor-pointer h-0 w-0'
 					checked={completed}
-					onChange={() => onChecked(id)}
+					onChange={() => dispatch(toggleTodo(id))}
 				/>
 				<span
 					className={`${stylesActive} absolute h-5 w-5 flex items-center justify-center  left-4 top-[-10px] rounded-full border-white/20 border-[1px]`}
@@ -20,7 +23,7 @@ export const SingleTodo = ({ id, title, completed, onDelete, onChecked }) => {
 				</span>
 			</label>
 			<span
-				onClick={() => onChecked(id)}
+				onClick={() => dispatch(toggleTodo(id))}
 				className={
 					completed
 						? 'line-through text-white/20 transition-all'
@@ -31,7 +34,7 @@ export const SingleTodo = ({ id, title, completed, onDelete, onChecked }) => {
 			</span>
 			<button
 				className=' transition-all hidden text-white/20 hover:text-white  group-hover:block mx-auto'
-				onClick={() => onDelete(id)}
+				onClick={() => dispatch(removeTodo(id))}
 			>
 				X
 			</button>

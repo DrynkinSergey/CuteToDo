@@ -1,34 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { SingleTodo } from './singleTodo'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { Filter } from './Filter'
+import { selectFilteredData, selectTodos } from '../redux/selectors'
 
-export const TodoList = ({ data, onChecked, onDelete }) => {
+export const TodoList = () => {
+	const data = useSelector(selectFilteredData)
+	const globalData = useSelector(selectTodos)
+	const ViewData = () =>
+		data.map(todo => <SingleTodo key={todo.id} {...todo} />)
+
 	return (
 		<div className='font-josefin bg-darkMain shadow-mainDark'>
 			<ul className='rounded-md overflow-hidden'>
-				{data.map(todo => {
-					return (
-						<SingleTodo
-							onDelete={onDelete}
-							onChecked={onChecked}
-							key={todo.id}
-							{...todo}
-						/>
-					)
-				})}
-				<li className='list-none  py-4   text-white/40 flex justify-between px-8 items-center'>
-					<span>5 items left</span>
-					<div className='flex gap-4 '>
-						<span className='hover:text-white cursor-pointer text-blue-500'>
-							All
-						</span>
-						<span className='hover:text-white cursor-pointer'>Active</span>
-						<span className='hover:text-white cursor-pointer'>Completed</span>
-					</div>
-					<span className='hover:text-white cursor-pointer'>
-						Clear Completed
-					</span>
-				</li>
+				<ViewData />
+				{globalData.length > 0 && <Filter />}
 			</ul>
 		</div>
 	)
