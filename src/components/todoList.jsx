@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export const TodoList = ({ data, onChecked, onDelete }) => {
 	return (
-		<div className='font-josefin '>
+		<div className='font-josefin bg-darkMain'>
 			<ul className='rounded-md overflow-hidden'>
 				{data.map(todo => {
 					return (

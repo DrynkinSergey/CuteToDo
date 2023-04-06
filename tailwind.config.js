@@ -9,6 +9,10 @@ export default {
 			gridTemplateColumns: {
 				todo: '45px 3fr 1fr ',
 			},
+			colors: {
+				darkMain: 'hsl(235, 24%, 19%)',
+				darkVeryBG: 'hsl(235, 21%, 11%)',
+			},
 		},
 	},
 	plugins: [],
