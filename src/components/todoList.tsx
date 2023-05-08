@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { SingleTodo } from './singleTodo'
-import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Filter } from './Filter'
 import { selectFilteredData, selectTodos } from '../redux/selectors'

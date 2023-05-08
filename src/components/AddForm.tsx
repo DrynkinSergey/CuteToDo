@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../redux/todoSlice'
-
-export const AddForm = ({ onSubmit }) => {
+import React from 'react'
+export const AddForm = () => {
 	const dispatch = useDispatch()
 
 	const handleSubmit = e => {

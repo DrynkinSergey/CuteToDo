@@ -1,3 +1,4 @@
+import React from 'react'
 import { TodoList } from './components/todoList'
 import { AddForm } from './components/AddForm'
 import bg from './assets/images/bg-desktop-dark.jpg'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCompletedTodos, selectFilter } from '../redux/selectors'
 import { setFilter } from '../redux/filterSlice'
@@ -40,7 +41,7 @@ export const Filter = () => {
 				</span>
 			</div>
 			<span
-				onClick={() => dispatch(resetComplete())}
+				onClick={() => dispatch(resetComplete(''))}
 				className={`${classes} order-2 sm:order-2`}
 			>
 				Clear Completed
