@@ -1,15 +1,17 @@
-import { useDispatch } from 'react-redux'
 import { addTodo } from '../redux/todoSlice'
 import React from 'react'
+import { useAppDispatch } from '../redux/store'
 export const AddForm = () => {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
-	const handleSubmit = e => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		const target = e.target as HTMLFormElement
+
 		e.preventDefault()
-		if (e.target.addTodo.value.trim()) {
-			dispatch(addTodo(e.target.addTodo.value.trim()))
-			e.target.reset()
-			e.target.focus()
+		if (target.addTodo.value.trim()) {
+			dispatch(addTodo(target.addTodo.value.trim()))
+			target.reset()
+			target.focus()
 		}
 	}
 	return (

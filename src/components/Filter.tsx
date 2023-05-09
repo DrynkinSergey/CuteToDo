@@ -1,13 +1,13 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { selectCompletedTodos, selectFilter } from '../redux/selectors'
 import { setFilter } from '../redux/filterSlice'
 import { resetComplete } from '../redux/todoSlice'
+import { useAppDispatch, useAppSelector } from '../redux/store'
 
 export const Filter = () => {
-	const filter = useSelector(selectFilter)
-	const completedTodos = useSelector(selectCompletedTodos)
-	const dispatch = useDispatch()
+	const filter = useAppSelector(selectFilter)
+	const completedTodos = useAppSelector(selectCompletedTodos)
+	const dispatch = useAppDispatch()
 	const setClasses = type =>
 		filter === type ? `${classes} text-blue-600` : classes
 	const classes = 'hover:text-white cursor-pointer'

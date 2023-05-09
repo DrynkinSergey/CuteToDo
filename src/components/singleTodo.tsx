@@ -1,9 +1,10 @@
 import React from 'react'
 import icon from './../assets/images/icon-check.svg'
-import { useDispatch } from 'react-redux'
 import { removeTodo, toggleTodo } from '../redux/todoSlice'
-export const SingleTodo = ({ id, title, completed }) => {
-	const dispatch = useDispatch()
+import { useAppDispatch } from '../redux/store'
+import { ITodo } from '../types'
+export const SingleTodo: React.FC<ITodo> = ({ id, title, completed }) => {
+	const dispatch = useAppDispatch()
 	const stylesActive = completed
 		? 'bg-gradient-to-br from-checkboxFrom to-checkboxTo'
 		: ''

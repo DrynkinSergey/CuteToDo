@@ -12,6 +12,7 @@ import {
 	REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 const persistConfig = {
 	key: 'todos',
@@ -30,3 +31,9 @@ export const store = configureStore({
 		}),
 })
 export const persistor = persistStore(store)
+
+export type RootState = ReturnType<typeof store.getState>
+export type RootDispatch = typeof store.dispatch
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+export const useAppDispatch: () => RootDispatch = useDispatch

@@ -1,8 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit'
+import { RootState } from './store'
 
-export const selectFilter = state => state.filter.filter
-export const selectTodos = state => state.todos.todoList
-export const selectCompletedTodos = state => {
+export const selectFilter = (state: RootState) => state.filter.filter
+export const selectTodos = (state: RootState) => state.todos.todoList
+export const selectCompletedTodos = (state: RootState) => {
 	const todos = selectTodos(state)
 	return todos.reduce((acc, todo) => (!todo.completed ? (acc += 1) : acc), 0)
 }

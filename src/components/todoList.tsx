@@ -7,8 +7,13 @@ import { selectFilteredData, selectTodos } from '../redux/selectors'
 export const TodoList = () => {
 	const data = useSelector(selectFilteredData)
 	const globalData = useSelector(selectTodos)
-	const ViewData = () =>
-		data.map(todo => <SingleTodo key={todo.id} {...todo} />)
+	const ViewData = () => (
+		<>
+			{data.map(todo => (
+				<SingleTodo key={todo.id} {...todo} />
+			))}
+		</>
+	)
 
 	return (
 		<div className='font-josefin bg-darkMain shadow-mainDark'>

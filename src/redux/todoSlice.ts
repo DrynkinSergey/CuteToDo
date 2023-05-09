@@ -14,10 +14,10 @@ const todoSlice = createSlice({
 	initialState,
 	reducers: {
 		addTodo: {
-			reducer: (state, action: PayloadAction<any>) => {
+			reducer: (state, action: PayloadAction<ITodo>) => {
 				state.todoList.push(action.payload)
 			},
-			prepare: title => ({
+			prepare: (title: string) => ({
 				payload: { id: nanoid(), title, completed: false },
 			}),
 		},
@@ -25,7 +25,7 @@ const todoSlice = createSlice({
 			const item = state.todoList.findIndex(item => item.id === payload)
 			state.todoList.splice(item, 1)
 		},
-		toggleTodo: (state, { payload }) => {
+		toggleTodo: (state, { payload }: PayloadAction<string>) => {
 			const item = state.todoList.find(item => item.id === payload)
 			if (item) item.completed = !item?.completed
 		},
