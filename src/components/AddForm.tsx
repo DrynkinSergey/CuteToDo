@@ -1,6 +1,6 @@
-import { addTodo } from '../redux/todoSlice'
 import React from 'react'
 import { useAppDispatch } from '../redux/store'
+import { addTodoThunk } from '../redux/todos/operations'
 export const AddForm = () => {
 	const dispatch = useAppDispatch()
 
@@ -9,7 +9,8 @@ export const AddForm = () => {
 
 		e.preventDefault()
 		if (target.addTodo.value.trim()) {
-			dispatch(addTodo(target.addTodo.value.trim()))
+			//@ts-ignore
+			dispatch(addTodoThunk(target.addTodo.value.trim()))
 			target.reset()
 			target.focus()
 		}
@@ -25,9 +26,7 @@ export const AddForm = () => {
 				name='addTodo'
 				type='text'
 			/>
-			<button className='border-[1px] border-white/10 px-4 rounded-md'>
-				+
-			</button>
+			<button className='border-[1px] border-white/10 px-4 rounded-md'>+</button>
 		</form>
 	)
 }

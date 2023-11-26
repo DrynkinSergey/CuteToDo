@@ -9,8 +9,8 @@ export const TodoList = () => {
 	const globalData = useSelector(selectTodos)
 	const ViewData = () => (
 		<>
-			{data.map(todo => (
-				<SingleTodo key={todo.id} {...todo} />
+			{data?.map(todo => (
+				<SingleTodo key={todo._id} {...todo} />
 			))}
 		</>
 	)
@@ -19,7 +19,7 @@ export const TodoList = () => {
 		<div className='font-josefin bg-darkMain shadow-mainDark'>
 			<ul className='rounded-md overflow-hidden'>
 				<ViewData />
-				{globalData.length > 0 && <Filter />}
+				{globalData?.length > 0 && <Filter />}
 			</ul>
 		</div>
 	)
