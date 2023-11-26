@@ -11,10 +11,10 @@ export const Login = () => {
 		dispatch(loginThunk(data))
 	}
 	return (
-		<form onSubmit={handleSubmit(submit)}>
-			<input {...register('email')} />
-			<input {...register('password')} />
-			<button>Login</button>
+		<form className='flex flex-col gap-4' onSubmit={handleSubmit(submit)}>
+			<input placeholder='email' className='border-2 border-black p-2' {...register('email')} />
+			<input placeholder='password' className='border-2 border-black p-2' {...register('password')} />
+			<button className='border-2 border-black p-2'>Login</button>
 		</form>
 	)
 }
