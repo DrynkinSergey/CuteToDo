@@ -1,4 +1,6 @@
 import React from 'react'
+import { MdDelete } from 'react-icons/md'
+
 //@ts-ignore
 import icon from './../assets/images/icon-check.svg'
 import { useAppDispatch } from '../redux/store'
@@ -25,11 +27,11 @@ export const SingleTodo: React.FC<ITodo> = ({ _id: id, title, completed }) => {
 			</label>
 			<span className={completed ? 'line-through text-white/20 transition-all' : 'transition-all'}>{title}</span>
 			<button
-				className=' transition-all hidden text-white/20 hover:text-white  group-hover:block mx-auto'
+				className=' transition-all hidden text-white/20 hover:text-red-500  group-hover:block mx-auto'
 				//@ts-ignore
 				onClick={() => dispatch(deleteTodoThunk(id))}
 			>
-				X
+				<MdDelete />
 			</button>
 		</li>
 	)

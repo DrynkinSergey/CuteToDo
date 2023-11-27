@@ -48,9 +48,9 @@ const slice = createSlice({
 				state.todos = state.todos.filter(item => item._id !== action.payload)
 			})
 			.addCase(updateTodoThunk.fulfilled, (state, action) => {
-				const element = state.todos.findIndex(item => item._id === action.payload._id)
+				const element = state.todos.find(item => item._id === action.payload._id)
 				if (element) {
-					state.todos[element].completed = !state.todos[element].completed
+					element.completed = !element.completed
 				}
 			})
 			.addCase(fetchTodos.rejected, (state, action) => {

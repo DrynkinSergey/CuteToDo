@@ -15,7 +15,12 @@ export const Register = () => {
 			<form className='flex flex-col gap-4 px-4 py-4 border-2 border-white rounded-md ' onSubmit={handleSubmit(submit)}>
 				<input placeholder='name...' className='border-2 border-black p-2' {...register('name')} />
 				<input placeholder='email...' className='border-2 border-black p-2' {...register('email')} />
-				<input placeholder='password...' className='border-2 border-black p-2' {...register('password')} />
+				<input
+					placeholder='password...'
+					type='password'
+					className='border-2 border-black p-2'
+					{...register('password')}
+				/>
 				<button className='border-2 bg-white hover:bg-blue-700 hover:text-white transition border-black p-2'>
 					Register
 				</button>

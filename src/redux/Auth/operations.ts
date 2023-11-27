@@ -52,7 +52,6 @@ export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkAPI)
 	try {
 		setToken(savedToken)
 		const { data } = await API.get('auth/current')
-		console.log(data)
 		return data
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)

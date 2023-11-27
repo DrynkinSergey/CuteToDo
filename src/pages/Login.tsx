@@ -14,7 +14,12 @@ export const Login = () => {
 		<div className='bg-darkMain min-h-screen grid place-content-center'>
 			<form className='flex flex-col gap-4 px-4 py-4 border-2 border-white rounded-md ' onSubmit={handleSubmit(submit)}>
 				<input placeholder='email...' className='border-2 border-black p-2' {...register('email')} />
-				<input placeholder='password...' className='border-2 border-black p-2' {...register('password')} />
+				<input
+					placeholder='password...'
+					className='border-2 border-black p-2'
+					{...register('password')}
+					type='password'
+				/>
 				<button className='border-2 bg-white hover:bg-blue-700 hover:text-white transition border-black p-2'>
 					Login
 				</button>

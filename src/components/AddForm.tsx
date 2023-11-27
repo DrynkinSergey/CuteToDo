@@ -22,8 +22,9 @@ export const AddForm = () => {
 		>
 			<input
 				placeholder='Add some todo....'
-				className=' px-4  w-2/3 rounded-md mr-4 text-black'
+				className=' px-4 outline-none  w-2/3 rounded-md mr-4 text-black'
 				name='addTodo'
+				autoComplete='off'
 				type='text'
 			/>
 			<button className='border-[1px] border-white/10 px-4 rounded-md'>+</button>
