@@ -44,7 +44,7 @@ const slice = createSlice({
 			.addCase(logoutThunk.fulfilled, (state, action) => {
 				state.todos = []
 			})
-			.addCase(deleteTodoThunk.fulfilled, (state, action) => {
+			.addCase(deleteTodoThunk.fulfilled, (state, action: PayloadAction<any>) => {
 				state.todos = state.todos.filter(item => item._id !== action.payload)
 			})
 			.addCase(updateTodoThunk.fulfilled, (state, action) => {

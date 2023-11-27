@@ -13,6 +13,7 @@ const slice = createSlice({
 		isLoggedIn: false,
 		isRefreshing: false,
 	},
+	reducers: {},
 	extraReducers: builder => {
 		builder
 			.addCase(registerThunk.fulfilled, (state, action) => {
