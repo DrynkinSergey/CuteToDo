@@ -18,8 +18,11 @@ export const Login = () => {
 				<button className='border-2 bg-white hover:bg-blue-700 hover:text-white transition border-black p-2'>
 					Login
 				</button>
-				<span>
-					You don't have account? <Link to='/register'>Sign UP!</Link>
+				<span className='text-white'>
+					You don't have account?{' '}
+					<Link className='underline text-teal-600' to='/register'>
+						Sign UP!
+					</Link>
 				</span>
 			</form>
 		</div>

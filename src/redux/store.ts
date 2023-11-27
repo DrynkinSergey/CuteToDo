@@ -7,14 +7,15 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { userReducer } from './Auth/userSlice'
 
 const persistConfig = {
-	key: 'todos',
+	key: 'auth',
 	version: 1,
 	storage,
+	whitelist: ['token'],
 }
-const persistedReducer = persistReducer(persistConfig, todoReducer)
+const persistedReducer = persistReducer(persistConfig, userReducer)
 
 export const store = configureStore({
-	reducer: { user: userReducer, todos: persistedReducer, filter: filterReducer },
+	reducer: { user: persistedReducer, todos: todoReducer, filter: filterReducer },
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
 			serializableCheck: {

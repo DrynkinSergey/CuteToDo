@@ -36,7 +36,7 @@ export const loginThunk = createAsyncThunk('auth/login', async (credentials, thu
 
 export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 	try {
-		const { data } = await API.post('users/logout')
+		const { data } = await API.post('auth/logout')
 		clearToken()
 		return data
 	} catch (error) {
@@ -44,15 +44,14 @@ export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkAPI) =
 	}
 })
 
-export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkAPI) => {
 	const savedToken = thunkAPI.getState().user.token
-	console.log(savedToken)
 	if (!savedToken) {
 		return thunkAPI.rejectWithValue('Token is not exist')
 	}
 	try {
 		setToken(savedToken)
-		const { data } = await API.get('users/me')
+		const { data } = await API.get('auth/current')
 		console.log(data)
 		return data
 	} catch (error) {
