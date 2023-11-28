@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { SingleTodo } from './singleTodo'
 import { useSelector } from 'react-redux'
 import { Filter } from './Filter'
-import { selectFilteredData, selectTodos } from '../redux/selectors'
+import { selectFilteredData, selectLoading, selectTodos } from '../redux/selectors'
+import { useAppSelector } from '../redux/store'
+import { FetchLoader } from './FetchLoader'
 
 export const TodoList = () => {
-	const data = useSelector(selectFilteredData)
+	const data = useAppSelector(selectFilteredData)
 	const globalData = useSelector(selectTodos)
+	const loading = useAppSelector(selectLoading)
 	const ViewData = () => (
 		<>
 			{data?.map(todo => (
@@ -17,10 +20,14 @@ export const TodoList = () => {
 
 	return (
 		<div className='font-josefin bg-darkMain shadow-mainDark'>
-			<ul className='rounded-md overflow-hidden'>
-				<ViewData />
-				{globalData?.length > 0 && <Filter />}
-			</ul>
+			{loading && !globalData.length ? (
+				<FetchLoader />
+			) : (
+				<ul className='rounded-md overflow-hidden'>
+					<ViewData />
+					{globalData?.length > 0 && <Filter />}
+				</ul>
+			)}
 		</div>
 	)
 }

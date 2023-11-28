@@ -3,6 +3,8 @@ import { RootState } from './store'
 
 export const selectFilter = (state: RootState) => state.filter.filter
 export const selectTodos = (state: RootState) => state.todos.todos
+export const selectLoading = (state: RootState) => state.todos.loading
+export const selectCurrentTodo = (state: RootState) => state.todos.currentTodo
 export const selectCompletedTodos = (state: RootState) => {
 	const todos = selectTodos(state)
 	return todos.reduce((acc, todo) => (!todo.completed ? (acc += 1) : acc), 0)

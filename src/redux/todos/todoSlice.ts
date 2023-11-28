@@ -9,6 +9,7 @@ type Init = {
 	error: string
 	filter: 'all' | 'active' | 'completed'
 	filterStr: string
+	currentTodo: string
 }
 
 const initialState: Init = {
@@ -17,6 +18,7 @@ const initialState: Init = {
 	error: '',
 	filter: 'all',
 	filterStr: '',
+	currentTodo: '',
 }
 
 const pending = (state, action) => {
@@ -33,6 +35,9 @@ const slice = createSlice({
 		},
 		changeFilter: (state, { payload }) => {
 			state.filterStr = payload
+		},
+		setCurrentTodo: (state, { payload }) => {
+			state.currentTodo = payload
 		},
 	},
 	extraReducers: builder => {
@@ -66,5 +71,5 @@ const slice = createSlice({
 	},
 })
 
-export const { setFilter, changeFilter } = slice.actions
+export const { setFilter, changeFilter, setCurrentTodo } = slice.actions
 export const todoReducer = slice.reducer

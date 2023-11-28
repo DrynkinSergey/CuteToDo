@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { API } from '../Auth/operations'
+import { setCurrentTodo } from './todoSlice'
 
 export const fetchTodos = createAsyncThunk('fetchTodos', async (_, thunkAPI) => {
 	try {
@@ -19,11 +20,13 @@ export const addTodoThunk = createAsyncThunk('addTodo', async (body, thunkAPI) =
 	}
 })
 
-export const deleteTodoThunk = createAsyncThunk('todos/delete', async (id, { rejectWithValue }) => {
+export const deleteTodoThunk = createAsyncThunk('todos/delete', async (id, { dispatch, rejectWithValue }) => {
+	dispatch(setCurrentTodo(id))
 	try {
 		await API.delete(`/todos/${id}`)
 		return id
 	} catch (error) {
+		dispatch(setCurrentTodo(''))
 		return rejectWithValue(error.message)
 	}
 })

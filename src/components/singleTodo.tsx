@@ -3,11 +3,16 @@ import { MdDelete } from 'react-icons/md'
 
 //@ts-ignore
 import icon from './../assets/images/icon-check.svg'
-import { useAppDispatch } from '../redux/store'
+import { useAppDispatch, useAppSelector } from '../redux/store'
 import { ITodo } from '../types'
 import { deleteTodoThunk, updateTodoThunk } from '../redux/todos/operations'
+import { selectCurrentTodo, selectLoading } from '../redux/selectors'
+import { FetchLoader } from './FetchLoader'
+import { ThreeDots } from 'react-loader-spinner'
 export const SingleTodo: React.FC<ITodo> = ({ _id: id, title, completed }) => {
 	const dispatch = useAppDispatch()
+	const currentTodo = useAppSelector(selectCurrentTodo)
+	const loading = useAppSelector(selectLoading)
 	const stylesActive = completed ? 'bg-gradient-to-br from-checkboxFrom to-checkboxTo' : ''
 	return (
 		<li className='group  list-none cursor-pointer  py-4  border-b-white/10 border-b-[1px] text-white/80 grid   grid-cols-todo items-center'>
@@ -26,13 +31,28 @@ export const SingleTodo: React.FC<ITodo> = ({ _id: id, title, completed }) => {
 				</span>
 			</label>
 			<span className={completed ? 'line-through text-white/20 transition-all' : 'transition-all'}>{title}</span>
-			<button
-				className=' transition-all hidden text-white/20 hover:text-red-500  group-hover:block mx-auto'
-				//@ts-ignore
-				onClick={() => dispatch(deleteTodoThunk(id))}
-			>
-				<MdDelete />
-			</button>
+			{loading && currentTodo === id ? (
+				<div className='flex justify-center'>
+					<ThreeDots
+						height='25'
+						width='25'
+						radius='9'
+						color='#990b8d'
+						ariaLabel='three-dots-loading'
+						wrapperStyle={{}}
+						wrapperClass=''
+						visible={true}
+					/>
+				</div>
+			) : (
+				<button
+					className=' transition-all hidden text-white/20 hover:text-red-500  group-hover:block mx-auto'
+					//@ts-ignore
+					onClick={() => dispatch(deleteTodoThunk(id))}
+				>
+					<MdDelete />
+				</button>
+			)}
 		</li>
 	)
 }
