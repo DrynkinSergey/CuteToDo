@@ -24,7 +24,13 @@ export const TodoList = () => {
 				<FetchLoader />
 			) : (
 				<ul className='rounded-md overflow-hidden'>
-					<ViewData />
+					{globalData?.length ? (
+						<ViewData />
+					) : (
+						<h2 className='py-4 px-2 text-center font-bold'>
+							You don't have any todo! <span className='text-violet-600 '>Let's create</span> some!
+						</h2>
+					)}
 					{globalData?.length > 0 && <Filter />}
 				</ul>
 			)}
